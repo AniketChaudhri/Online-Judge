@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <title> Online Judge - {% block title %} {% endblock %} </title>
+        
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+    </head>
+<body>
+<div>
+<div class="ui secondary pointing menu">
+  <a href='/judge' class="item">
+    Home
+  </a>
+  <a class="item" href="/judge/problems"> 
+    Problems
+  </a>
+  <a class="item" href="/judge/about">
+    About
+  </a>
+  {%if user.is_authenticated %}
+    <a class="item" href="/judge/add-problem">
+    Add Problem
+    </a>
+  {%endif%}
+  {%block submit%} {%endblock%}
+  <div class="right menu">
+    
+    {%if user.is_authenticated%}
+    <a href='/judge/logout'class="ui item">
+      Logout
+    </a>
+    {% else %}
+    <a href='/judge/login' class="ui item">
+      Login Or Register
+    </a>
+    {% endif %}
+ 
+  </div>
+</div>
+</div>
+<div class="ui internally grid">
+  <div class="row">
+    <div class="three wide column">
+      <img>
+    </div>
+    <div class="ten wide column">
+   
+        <div>
+            {% block body_block %} {% endblock %}
+        </div>
+
+    
+
+    </div>
+    <div class="three wide column">
+      <img>
+    </div>
+  </div>
+  <div class="row">
+    <div class="three wide column">
+      <img>
+    </div>
+    <div class="ten wide column" style="position: relative;top: 300px">
+    
+       
+   
+    </div>
+    <div class="three wide column">
+      <img>
+    </div>
+  </div>
+</div>
+
+
+ </body>
+
+
+</html>
