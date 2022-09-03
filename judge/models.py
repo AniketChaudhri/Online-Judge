@@ -49,7 +49,7 @@ class Problem(models.Model):
     num_wa = models.IntegerField(default=0)          # number of wrong answers
     num_re = models.IntegerField(default=0)          # number of runtime errors
     num_tle = models.IntegerField(default=0)         # number of tles
-    num_ce = models.IntegerField(default=0)
+    num_ce = models.IntegerField(default=0)             # number of compilation errors
     date_added = models.DateTimeField(auto_now_add=True)  # When added
     time_limit = models.IntegerField(default=1)         # Time Limit
     source = models.CharField(max_length=255)
@@ -91,7 +91,7 @@ class Submission(models.Model):
     submitter = models.ForeignKey(Coder, null=True, on_delete=models.DO_NOTHING)
     problem = models.ForeignKey(Problem, default=None, null=True, on_delete=models.DO_NOTHING)
     status = models.CharField(max_length=2, default="NT", choices=STATUSES)
-    lang = models.CharField(max_length=4, default="C", choices=LANGUAGES)
+    lang = models.CharField(max_length=4, default="CPP", choices=LANGUAGES)
     code = models.TextField(default="")
     created = models.DateTimeField(auto_now_add=True)
     private = models.BooleanField(default=True)
